@@ -1,3 +1,4 @@
+"use strict";
 //cú pháp khai báo: var/let/const tenBien:kieuDuLieu = value;
 //1. Kiểu dữ liệu nguyên thủy: Number/String/Boolean:
 //1.1. Number 

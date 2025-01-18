@@ -1,17 +1,4 @@
 {
-    "products": [
-        {
-            "id": 1,
-            "name": "Product 1",
-            "price": 100000,
-            "image": ""
-        },
-        {
-            "id": 2,
-            "name": "Product 2",
-            "price": 200000,
-            "image": ""
-        }
-    ],
-    "users": []
+  "products": [],
+  "users": []
 }

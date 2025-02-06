@@ -4,6 +4,7 @@ import Homepage from './pages/Homepage';
 import Detail from './pages/Detail';
 import NotFound from './pages/NotFound';
 import Register from './pages/Register';
+import Login from './pages/Login';
 
 const routeConfigs = [ //khai báo danh sách router
   { //router home
@@ -17,6 +18,10 @@ const routeConfigs = [ //khai báo danh sách router
   { //router register
     path: '/register',
     element: <Register/>,
+  },
+  { //router login
+    path: '/login',
+    element: <Login/>,
   },
   {
     path: '*', //các đường dẫn không tồn tại sẽ chạy vào đây

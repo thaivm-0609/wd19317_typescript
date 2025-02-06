@@ -12,6 +12,11 @@
       "email": "thaivm2@fe.edu.vn",
       "password": "$2a$10$6G2DHDQ9Z3acWRHK/ZQ.Xe7iRw63PoJnc/h3xTBgud1OiW8.G8Lle",
       "id": 1
+    },
+    {
+      "email": "thaivm3@fe.edu.vn",
+      "password": "$2a$10$6eK4MArYG4TGrvyO.mTeOeCaLKgKsecATjGOmEdkNkEPpMGW8nyV6",
+      "id": 2
     }
   ]
 }

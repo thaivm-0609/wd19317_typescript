@@ -1,5 +1,8 @@
 import axios from "axios"
 import { useForm, SubmitHandler } from "react-hook-form" //xử lý dữ liệu trong form
+//Joi để validate dữ liệu
+import Joi from "joi";
+import { joiResolver } from "@hookform/resolvers/joi";
 
 //khai báo trường dữ liệu sẽ được gửi lên qua form
 type RegisterInput = {
@@ -8,11 +11,20 @@ type RegisterInput = {
 }
 
 function Register() {
+    //khai báo rule validate (quy tắc)
+    const validateForm = Joi.object({
+        email: Joi.string().required().email({tlds:false}), //quy tắc cho trường email
+        password: Joi.string().required().min(6), //quy tắc cho trường password
+    });
+
     //khai báo register và handleSubmit để làm việc với form
     const {
         register,
         handleSubmit,
-    } = useForm<RegisterInput>();
+        formState: { errors } //errors lưu trữ lỗi của ô input, nếu có
+    } = useForm<RegisterInput>({
+        resolver: joiResolver(validateForm)
+    });
 
     //khai báo hàm onSubmitForm khi ng dùng bấm nút submit
     const onSubmitForm: SubmitHandler<RegisterInput>=async(data)=>{
@@ -38,6 +50,11 @@ function Register() {
                             ...register('email')
                         }
                     />
+                    {
+                        errors?.email && ( //kiểm tra dữ liệu của email có lỗi hay ko
+                            <p>{ errors?.email?.message }</p>
+                        )
+                    }
                 </div>
                 <div>
                     <label htmlFor="">Password</label>
@@ -48,6 +65,11 @@ function Register() {
                             ...register('password')
                         }
                     />
+                    {
+                        errors?.password && ( //kiểm tra dữ liệu của password có lỗi hay ko
+                            <p>{ errors?.password?.message }</p>
+                        )
+                    }
                 </div>
                 <button type="submit">Register</button>
             </form>

@@ -10,6 +10,7 @@ function Login() {
     const {
         register,
         handleSubmit,
+        formState: { errors }
     } = useForm<LoginInput>()
 
     //khai báo hàm onSubmit khi ng dùng bấm nút submit
@@ -37,9 +38,18 @@ function Login() {
                         type="text"
                         className="form-control"
                         {
-                            ...register('email')
+                            ...register('email', {
+                                required: true,
+                                minLength: 6,
+                                pattern: /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/
+                            })
                         }
                     />
+                    {
+                        errors?.email && (
+                            <p>Email không hợp lệ</p>
+                        )
+                    }
                 </div>
                 <div>
                     <label htmlFor="" className="form-label">Password</label>

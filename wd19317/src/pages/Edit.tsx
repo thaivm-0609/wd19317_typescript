@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 type ProductInput = {
     name: string,
@@ -32,6 +32,21 @@ function Edit() {
         }
     }
 
+    const nav = useNavigate();
+    const onEdit:SubmitHandler<ProductInput> = async (data) => {
+        try {
+            //B1: call API gửi dữ liệu lên json_server
+            const response = await axios.put(`http://localhost:3000/products/${id}`, data);
+            //B2: kiểm tra response của server và thông báo cho ng dùng
+            if (response.status == 200) {
+                alert('Chỉnh sửa thành công');
+                nav('/');
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     useEffect(() => {
         if (!id) return;
         getDetail(id);
@@ -40,7 +55,7 @@ function Edit() {
     return (
         <div>
             <h1>Edit Form</h1>
-            <form>
+            <form onSubmit={handleSubmit(onEdit)}>
                 <div>
                     <label htmlFor="">Name</label>
                     <input 

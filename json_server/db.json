@@ -1,10 +1,10 @@
 {
   "products": [
     {
-      "id": 3,
-      "name": "Product 3",
-      "price": 300000,
-      "image": "https://picsum.photos/200"
+      "name": "abcxyz",
+      "image": "https://picsum.photos/200/100",
+      "price": "8888",
+      "id": 3
     },
     {
       "name": "thaivm2",
